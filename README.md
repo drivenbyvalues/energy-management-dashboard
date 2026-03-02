@@ -1,46 +1,167 @@
-# Getting Started with Create React App
+# Energy Management Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based dashboard for analyzing Green Button energy data to identify peak demands, high energy usage periods, and optimization opportunities.
+
+## Features
+
+- **Green Button Data Import**: Upload XML or CSV files exported from energy sites
+- **Interactive Visualizations**: Real-time charts showing energy usage patterns over time
+- **Peak Demand Detection**: Automatically identifies periods of high energy demand (>80% of maximum)
+- **High Usage Analysis**: Highlights top 10% energy consumption periods
+- **Cost Estimation**: Calculates estimated energy costs based on consumption
+- **Smart Recommendations**: AI-generated suggestions for energy efficiency improvements
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository or navigate to the project directory:
+```bash
+cd energy-dashboard
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+The application will open in your browser at `http://localhost:3000` (or another port if 3000 is occupied).
+
+### Using the Dashboard
+
+1. **Upload Data**: Click the upload area or drag and drop your Green Button data file (XML or CSV format)
+2. **View Analysis**: The dashboard automatically processes your data and displays:
+   - Total consumption metrics
+   - Peak demand periods
+   - High usage timeframes
+   - Cost estimates
+   - Energy efficiency recommendations
+3. **Explore Visualizations**: Interactive charts show energy usage patterns over time
+4. **Review Recommendations**: Check the insights panel for actionable energy-saving tips
+
+## Supported Data Formats
+
+### CSV Format
+```csv
+Date,Duration,Value
+2024-01-01 00:00,60,1.2
+2024-01-01 01:00,60,1.1
+```
+
+- **Date**: Timestamp in any standard date format
+- **Duration**: Reading interval in minutes (default: 60)
+- **Value**: Energy consumption in kWh
+
+### XML Format
+Standard Green Button XML format with IntervalBlock and IntervalReading elements.
+
+## Sample Data
+
+A sample CSV file (`sample-data.csv`) is included in the project root for testing purposes. This contains 48 hours of simulated energy usage data.
+
+## Project Structure
+
+```
+energy-dashboard/
+├── src/
+│   ├── components/
+│   │   ├── AnalysisPanel.tsx      # Energy analysis insights display
+│   │   ├── EnergyChart.tsx        # Interactive usage chart
+│   │   ├── FileUpload.tsx         # File upload component
+│   │   └── StatsCard.tsx          # Metric display cards
+│   ├── types/
+│   │   └── greenButton.ts         # TypeScript interfaces
+│   ├── utils/
+│   │   └── greenButtonParser.ts   # Data parsing and analysis logic
+│   ├── App.tsx                    # Main application component
+│   └── index.css                  # Global styles
+├── sample-data.csv                # Sample energy data
+└── README.md
+```
+
+## Key Components
+
+### Data Parser (`greenButtonParser.ts`)
+- Parses XML and CSV Green Button data formats
+- Calculates energy usage statistics
+- Detects peak demand periods (>80% of maximum usage)
+- Identifies high usage periods (top 10% percentile)
+- Generates energy efficiency recommendations
+
+### Analysis Features
+- **Total Consumption**: Sum of all energy usage
+- **Average Daily Consumption**: Mean energy usage per day
+- **Peak Demand Detection**: Identifies sustained high-demand periods
+- **Cost Estimation**: Calculates costs at $0.12/kWh (configurable)
+- **Smart Recommendations**: Context-aware efficiency suggestions
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
 
 ### `npm run build`
+Builds the app for production to the `build` folder. The build is optimized for best performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React** with TypeScript
+- **Recharts** for data visualization
+- **Lucide React** for icons
+- **date-fns** for date formatting
+- **D3** for advanced data processing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Customization
 
-### `npm run eject`
+### Adjusting Peak Demand Threshold
+Edit `src/utils/greenButtonParser.ts`:
+```typescript
+// Default is 0.8 (80% of max)
+detectPeakDemandPeriods(readings, 0.9) // 90% threshold
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Changing Cost Rate
+Edit `src/utils/greenButtonParser.ts`:
+```typescript
+// Default is $0.12 per kWh
+const costEstimate = usageData.totalConsumption * 0.15; // $0.15/kWh
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Modifying High Usage Percentile
+Edit `src/utils/greenButtonParser.ts`:
+```typescript
+// Default is 90th percentile
+findHighUsagePeriods(readings, 95) // Top 5%
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Enhancements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Export analysis reports to PDF
+- Compare multiple time periods
+- Set custom energy rate schedules
+- Integration with smart meter APIs
+- Historical trend analysis
+- Carbon footprint calculations
+- Budget tracking and alerts
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is open source and available under the MIT License.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Support
+
+For issues or questions, please open an issue in the project repository.
