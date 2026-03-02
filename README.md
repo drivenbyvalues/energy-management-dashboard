@@ -1,16 +1,25 @@
-# Energy Management Dashboard
+# Central Plant Intelligence Platform
 
-A comprehensive React-based dashboard for analyzing Green Button energy data to identify peak demands, high energy usage periods, and optimization opportunities.
+A comprehensive React-based platform for central plant equipment optimization, featuring advanced AI-powered analysis for chillers, cooling towers, and boilers. Transform your facility operations with data-driven insights and achieve up to 30% energy savings.
 
-## Features
+## 🚀 Primary Features
 
-- **Green Button Data Import**: Upload XML or CSV files exported from energy sites
-- **Interactive Visualizations**: Real-time charts showing energy usage patterns over time
-- **Peak Demand Detection**: Automatically identifies periods of high energy demand (>80% of maximum)
-- **High Usage Analysis**: Highlights top 10% energy consumption periods
-- **Cost Estimation**: Calculates estimated energy costs based on consumption
-- **Smart Recommendations**: AI-generated suggestions for energy efficiency improvements
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
+### Equipment Optimization
+- **Chiller Analysis**: Real-time efficiency monitoring, load optimization, and predictive maintenance
+- **Cooling Tower Performance**: Approach temperature optimization, water usage efficiency, and weather-based control
+- **Boiler Optimization**: Combustion efficiency tracking, fuel consumption optimization, and emissions monitoring
+
+### Professional Capabilities
+- **Apple-Inspired Design**: Modern, intuitive interface with smooth animations and transitions
+- **Comprehensive Analytics**: Performance metrics, trend analysis, and alert systems
+- **Cost-Benefit Analysis**: ROI calculations, payback periods, and implementation recommendations
+- **Real-Time Monitoring**: Live equipment status and performance indicators
+
+### Energy Management (Sub-Feature)
+- **Green Button Integration**: Upload XML or CSV files for energy usage analysis
+- **Peak Demand Detection**: Identify high consumption periods and optimization opportunities
+- **Cost Estimation**: Calculate energy costs and potential savings
+- **Interactive Visualizations**: Real-time charts and usage patterns
 
 ## Getting Started
 
